@@ -1,0 +1,164 @@
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  min-width: 945px;
+}
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td {
+  margin: 0;
+  padding: 0
+}
+
+img {
+  border: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+body.vscode-light {
+  background: #fff;
+  color: #1E1E1E;
+}
+
+body.vscode-dark {
+  background: #1E1E1E;
+  color: #fff;
+}
+
+body.vscode-high-contrast {
+  background: #1E1E1E;
+  color: #fff;
+}
+
+.loading {
+  text-align: center;
+}
+
+.bangumi-containr {
+  width: 945px;
+  margin: 0 auto;
+  padding-bottom: 15px;
+
+  .bangumi-header {
+    padding: 15px 0;
+    overflow: hidden;
+    h1 {
+      font-size: 20px;
+      display: inline-block;
+    }
+
+    .date {
+      font-size: 14px;
+    }
+
+    .hitokoto {
+      float: right;
+      font-size: 12px;
+      position: relative;
+      top: 4px;
+    }
+  }
+}
+
+.bangumi-list-container {
+  .anime-list {
+    width: 100%;
+    display: flex;
+  }
+
+  .anime-item {
+    flex: 1;
+  }
+
+  .day {
+    height: 60px;
+    text-align: right;
+    line-height: 60px;
+    background: url('https://bgm.tv/img/b5/ico_week.png') no-repeat;
+  }
+
+  .sun {
+    background-position: 0 0;
+  }
+
+  .mon {
+    background-position: -135px 0;
+  }
+
+  .tue {
+    background-position: -270px 0;
+  }
+
+  .wed {
+    background-position: -405px 0;
+  }
+
+  .thu {
+    background-position: -540px 0;
+  }
+
+  .fri {
+    background-position: -675px 0;
+  }
+
+  .sat {
+    background-position: -810px 0;
+  }
+
+  .anime-content {
+    a {
+      display: block;
+      position: relative;
+      transition: .3s ease-out;
+      padding: 2px;
+
+      &:hover {
+        transform: scale(1.02);
+        .mask {
+          opacity: 1;
+        }
+      }
+    }
+    .poster {
+      height: 135px;
+      width: 100%;
+      position: relative;
+    }
+    .anime-name {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      font-size: 12px;
+      background: rgba(0, 0, 0, .5);
+      color: #fff;
+      text-align: center;
+      line-height: 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .mask {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transition: .2s ease-out;
+    }
+  }
+}
+

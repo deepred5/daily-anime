@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
-import axios from 'axios';
 import * as path from 'path';
-import * as fs from 'fs';
+import { getSourchPath, getWebviewContent, getLoadingContent } from './util';
+import { getCalendar, getHitokoto } from './api';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -17,37 +17,17 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 		);
 
-		const onCssDiskPath = vscode.Uri.file(
-			path.join(context.extensionPath, 'src/template/css', 'anime.css')
-		);
+		const cssPath = getSourchPath(path.join(context.extensionPath, 'src/template/css', 'anime.css'));
+		const jsPath = getSourchPath(path.join(context.extensionPath, 'src/template/js', 'anime.js'));
 
-		const cssPath = onCssDiskPath.with({ scheme: 'vscode-resource' });
+		panel.webview.html = getLoadingContent({cssPath});
 
-		const onJsDiskPath = vscode.Uri.file(
-			path.join(context.extensionPath, 'src/template/js', 'anime.js')
-		);
+		Promise.all([getCalendar(), getHitokoto()]).then(([bangumi, hitokoto]) => {
+			panel.webview.html = getWebviewContent({ cssPath, jsPath, data: { bangumi, hitokoto } });
+		});
 
-		const jsPath = onJsDiskPath.with({ scheme: 'vscode-resource' });
-
-
-		panel.webview.html = getWebviewContent({cssPath, jsPath});
 	});
 
 	context.subscriptions.push(disposable);
 }
 
-function getWebviewContent(config: any) {
-	return `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>每日番剧</title>
-		<link rel="stylesheet" href="${config.cssPath}">
-</head>
-<body>
-<p id="test"></p>
-<script src="${config.jsPath}"></script>
-</body>
-</html>`;
-}
