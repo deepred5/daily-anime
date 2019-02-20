@@ -17,9 +17,9 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 		);
 
-		const cssPath = getSourchPath(path.join(context.extensionPath, 'src/template/css', 'anime.css'));
-		const jsPath = getSourchPath(path.join(context.extensionPath, 'src/template/js', 'anime.js'));
-		const imgPath = getSourchPath(path.join(context.extensionPath, 'src/template/assets', 'loading.png'));
+		const cssPath = getSourchPath(path.join(context.extensionPath, 'template/css', 'anime.css'));
+		const jsPath = getSourchPath(path.join(context.extensionPath, 'template/js', 'anime.js'));
+		const imgPath = getSourchPath(path.join(context.extensionPath, 'template/assets', 'loading.png'));
 
 		panel.webview.html = getLoadingContent({ cssPath, imgPath });
 

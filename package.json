@@ -2,10 +2,12 @@
 	"name": "daily-anime",
 	"displayName": "daily anime",
 	"description": "a extension for daily anime",
+	"icon": "daily-anime-icon.jpg",
 	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.31.0"
 	},
+	"publisher": "deepred",
 	"categories": [
 		"Other"
 	],
