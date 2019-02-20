@@ -1,16 +1,23 @@
 {
 	"name": "daily-anime",
-	"displayName": "daily-anime",
+	"displayName": "daily anime",
 	"description": "a extension for daily anime",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.31.0"
 	},
 	"categories": [
 		"Other"
 	],
+	"keywords": [
+		"anime",
+		"bangumi",
+		"hitokoto"
+	],
+	"repository": "https://github.com/deepred5/daily-anime",
 	"activationEvents": [
-		"onCommand:extension.dailyAnime"
+		"onCommand:extension.dailyAnime",
+		"onCommand:extension.hitokoto"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -19,8 +26,33 @@
 				"command": "extension.dailyAnime",
 				"title": "每日番剧",
 				"category": "anime"
+			},
+			{
+				"command": "extension.hitokoto",
+				"title": "一言",
+				"category": "hitokoto"
 			}
-		]
+		],
+		"keybindings": [
+			{
+				"command": "extension.dailyAnime",
+				"key": "alt+a"
+			},
+			{
+				"command": "extension.hitokoto",
+				"key": "alt+h"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"command": "extension.dailyAnime"
+				},
+				{
+					"command": "extension.hitokoto"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

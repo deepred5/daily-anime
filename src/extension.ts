@@ -5,7 +5,7 @@ import { getCalendar, getHitokoto } from './api';
 
 export function activate(context: vscode.ExtensionContext) {
 
-	let disposable = vscode.commands.registerCommand('extension.dailyAnime', () => {
+	let dailyAnimeCommand = vscode.commands.registerCommand('extension.dailyAnime', () => {
 
 		const panel = vscode.window.createWebviewPanel(
 			'dailyAnime',
@@ -23,12 +23,20 @@ export function activate(context: vscode.ExtensionContext) {
 
 		panel.webview.html = getLoadingContent({ cssPath, imgPath });
 
-		Promise.all([getCalendar(), getHitokoto()]).then(([bangumi, hitokoto]) => {
+		Promise.all([getCalendar(), getHitokoto('a')]).then(([bangumi, hitokoto]) => {
 			panel.webview.html = getWebviewContent({ cssPath, jsPath, data: { bangumi, hitokoto } });
 		});
 
 	});
 
-	context.subscriptions.push(disposable);
+	let hitokotoCommand = vscode.commands.registerCommand('extension.hitokoto', () => {
+		getHitokoto().then((res: any) => {
+			const { hitokoto = '都是时臣的错' } = res;
+			vscode.window.showInformationMessage(hitokoto);
+		});
+	});
+
+	context.subscriptions.push(dailyAnimeCommand);
+	context.subscriptions.push(hitokotoCommand);
 }
 

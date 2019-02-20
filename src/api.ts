@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const calendar = 'https://api.bgm.tv/calendar';
-const hitokoto = 'https://v1.hitokoto.cn/?c=a';
+const hitokoto = 'https://v1.hitokoto.cn';
 
 function getCalendar() {
   return new Promise((resolve, reject) => {
@@ -14,9 +14,9 @@ function getCalendar() {
 }
 
 
-function getHitokoto() {
+function getHitokoto(type?:string) {
   return new Promise((resolve, reject) => {
-    axios.get(hitokoto).then((res) => {
+    axios.get(type ? `${hitokoto}/?c=${type}` : hitokoto).then((res) => {
       resolve(res.data);
     }).catch((err) => {
       resolve({});
@@ -26,4 +26,4 @@ function getHitokoto() {
 
 
 
-export { getCalendar, getHitokoto }
+export { getCalendar, getHitokoto };
