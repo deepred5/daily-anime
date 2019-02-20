@@ -4,7 +4,7 @@ vscode插件
 
 插件地址: https://marketplace.visualstudio.com/items?itemName=deepred.daily-anime
 
-安装: 搜索插件`daily-anime`
+安装: 搜索插件`daily anime`
 
 功能:
 * 每日番剧: 从[bangumi](https://bgm.tv/)上获取番剧
