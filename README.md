@@ -3,10 +3,10 @@
 vscode extension
 
 功能:
-* 每日番剧: 从[bangumi](https://bgm.tv/)上获取每日番剧
-* 一言: 随机从网络获取一条acg句子
+* 每日番剧: 从[bangumi](https://bgm.tv/)上获取番剧
+* 一言: 随机从网络获取一条acgn句子
 
-![daily-anime](http://pic.deepred5.com/daily-anime.png)
+![daily-anime](https://i.loli.net/2019/02/20/5c6cec88e2d41.png)
 
 ### 使用方法
 
@@ -20,7 +20,7 @@ vscode extension
 
 **右键菜单**:
 
-![pic](http://pic.deepred5.com/daily-anime2.png)
+![pic](https://i.loli.net/2019/02/20/5c6cec7751703.png)
 
 
 **快捷键**:
