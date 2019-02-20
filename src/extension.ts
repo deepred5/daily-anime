@@ -19,8 +19,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 		const cssPath = getSourchPath(path.join(context.extensionPath, 'src/template/css', 'anime.css'));
 		const jsPath = getSourchPath(path.join(context.extensionPath, 'src/template/js', 'anime.js'));
+		const imgPath = getSourchPath(path.join(context.extensionPath, 'src/template/assets', 'loading.png'));
 
-		panel.webview.html = getLoadingContent({cssPath});
+		panel.webview.html = getLoadingContent({ cssPath, imgPath });
 
 		Promise.all([getCalendar(), getHitokoto()]).then(([bangumi, hitokoto]) => {
 			panel.webview.html = getWebviewContent({ cssPath, jsPath, data: { bangumi, hitokoto } });

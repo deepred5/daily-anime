@@ -15,8 +15,11 @@ function getLoadingContent(config: any) {
       <link rel="stylesheet" href="${config.cssPath}">
   </head>
   <body>
-  <div class="bangumi-containr loading">
-      <h1>加载中...</h1>
+  <div class="loading-container">
+    <div class="loading">
+        <img src="${config.imgPath}" alt="loading">
+        <h1>正在加载中...</h1>
+    </div>
   </div>
     <script>
     </script>

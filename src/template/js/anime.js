@@ -4,9 +4,15 @@ class Page {
     this.dateDom = document.getElementById('date');
     this.hitokotoDom = document.getElementById('hitokoto');
 
+    let today = new Date().getDay();
+    if (today === 0) {
+      today = 7;
+    };
+
     this.state = {
       bangumi: props.bangumi || [],
-      hitokoto: props.hitokoto || {}
+      hitokoto: props.hitokoto || {},
+      today
     }
 
     this.init();
@@ -41,7 +47,7 @@ class Page {
 
   renderHitokoto() {
     const { hitokoto='都是世界的错', from='伊藤诚' } = this.state.hitokoto;
-    return `${hitokoto} ---${from}`;
+    return `${hitokoto} ---<span class="from">${from}<span>`;
   }
 
   rednerDate() {
@@ -81,12 +87,17 @@ class Page {
       5: 'fri',
       6: 'sat',
       7: 'sun'
-    }
+    };
 
+    let todayTempalte = '';
+
+    if (data.weekday.id === this.state.today) {
+      todayTempalte = `<span class="today">当天</span>`;
+    }
 
     const animeTemplate = `
       <li class="anime-item">
-        <p class="day ${classMap[data.weekday.id]}"></p>
+        <p class="day ${classMap[data.weekday.id]}">${todayTempalte}</p>
         <ul>
         ${itemsTemplate}
         </ul>
@@ -96,6 +107,5 @@ class Page {
     return animeTemplate;
   }
 }
-
 
 new Page(window.GLOBAL_DATA || {});

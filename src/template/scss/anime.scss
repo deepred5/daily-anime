@@ -25,28 +25,36 @@ li {
 }
 
 body.vscode-light {
-  background: #fff;
   color: #1E1E1E;
 }
 
 body.vscode-dark {
-  background: #1E1E1E;
   color: #fff;
 }
 
 body.vscode-high-contrast {
-  background: #1E1E1E;
   color: #fff;
 }
 
+.loading-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
 .loading {
   text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .bangumi-containr {
   width: 945px;
   margin: 0 auto;
   padding-bottom: 15px;
+  overflow: hidden;
+  transition: .5s;
 
   .bangumi-header {
     padding: 15px 0;
@@ -65,13 +73,19 @@ body.vscode-high-contrast {
       font-size: 12px;
       position: relative;
       top: 4px;
+      padding-right: 6px;
+
+      .from {
+        font-size: 14px;
+        font-style: italic;
+      }
     }
   }
 }
 
 .bangumi-list-container {
   .anime-list {
-    width: 100%;
+    width: 945px;
     display: flex;
   }
 
@@ -81,9 +95,23 @@ body.vscode-high-contrast {
 
   .day {
     height: 60px;
-    text-align: right;
-    line-height: 60px;
     background: url('https://bgm.tv/img/b5/ico_week.png') no-repeat;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .today {
+    position: absolute;
+    width: 100%;
+    left: -40px;
+    top: 10px;
+    height: 25px;
+    color: #fff;
+    text-align: center;
+    line-height: 25px;
+    background: rgba(0, 0, 0, .6);
+    font-size: 14px;
+    transform: rotate(-45deg)
   }
 
   .sun {
@@ -118,11 +146,11 @@ body.vscode-high-contrast {
     a {
       display: block;
       position: relative;
-      transition: .3s ease-out;
+      transition: .2s;
       padding: 2px;
 
       &:hover {
-        transform: scale(1.02);
+        transform: scale(1.03);
         .mask {
           opacity: 1;
         }
@@ -157,8 +185,7 @@ body.vscode-high-contrast {
       bottom: 0;
       background: rgba(0, 0, 0, 0.3);
       opacity: 0;
-      transition: .2s ease-out;
+      transition: .2s;
     }
   }
 }
-
