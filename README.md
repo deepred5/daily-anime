@@ -2,9 +2,8 @@
 
 追番插件 (=・ω・=)
 
-插件地址: https://marketplace.visualstudio.com/items?itemName=deepred.daily-anime
+[插件地址](https://marketplace.visualstudio.com/items?itemName=deepred.daily-anime) [项目地址](https://github.com/deepred5/daily-anime)
 
-项目地址: https://github.com/deepred5/daily-anime
 
 安装: 搜索插件 `daily anime`
 
@@ -35,5 +34,5 @@
 
 输入`hitokoto`可随机展示一条句子
 
-## Changelog
+### Changelog
 see [changelog](https://github.com/deepred5/daily-anime/releases) for more infomation
