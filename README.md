@@ -34,3 +34,6 @@
 输入`anime`可打开番剧页面
 
 输入`hitokoto`可随机展示一条句子
+
+## Changelog
+see [changelog](https://github.com/deepred5/daily-anime/releases) for more infomation
