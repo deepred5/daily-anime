@@ -12,7 +12,8 @@ class Page {
     this.state = {
       bangumi: props.bangumi || [],
       hitokoto: props.hitokoto || {},
-      today
+      today,
+      isChinese: props.isChinese
     }
 
     this.init();
@@ -46,13 +47,16 @@ class Page {
   }
 
   renderHitokoto() {
-    const { hitokoto='都是世界的错', from='伊藤诚' } = this.state.hitokoto;
+    const { hitokoto = '都是世界的错', from = '伊藤诚' } = this.state.hitokoto;
     return `${hitokoto} ---<span class="from">${from}<span>`;
   }
 
   rednerDate() {
+    if (!this.state.isChinese) {
+      return `/ ${new Date().toDateString()}`;
+    }
     const { year, month, week, day } = this.formatTime();
-    return `/${year}年${month >= 10 ? month : '0' + month}月${day}日 ${week}`;
+    return `/ ${year}年${month >= 10 ? month : '0' + month}月${day}日 ${week}`;
   }
 
   renderList() {
@@ -66,12 +70,16 @@ class Page {
   renderDayAnime(data) {
     const items = data.items || [];
     const itemsTemplate = items.map((item) => {
+      let animeName = item.name_cn || item.name;
+      if (!this.state.isChinese) {
+        animeName = item.name || item.name_cn
+      }
       return `
       <li class="anime-content">
         <a href="${item.url}">
           <div class="poster"
             style="background:url('${item.images.medium}'); background-size: cover">
-            <p class="anime-name">${item.name_cn || item.name}</p>
+            <p class="anime-name">${animeName}</p>
           </div>
           <div class="mask"></div>
         </a>
@@ -92,7 +100,7 @@ class Page {
     let todayTempalte = '';
 
     if (data.weekday.id === this.state.today) {
-      todayTempalte = `<span class="today">当天</span>`;
+      todayTempalte = `<span class="today">${this.state.isChinese ? '当天': 'Today'}</span>`;
     }
 
     const animeTemplate = `

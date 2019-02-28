@@ -1,24 +1,39 @@
 import * as vscode from 'vscode';
-function getSourchPath(path: string) {
+
+interface HtmlConfig {
+  isChinese?: boolean;
+  cssPath?: string;
+  imgPath?: string;
+  jsPath?: string;
+  data?: {
+    bangumi: Array<object>,
+    hitokoto: object,
+    isChinese: boolean
+  };
+}
+
+
+
+function getSourchPath(path: string): object {
   const diskpath = vscode.Uri.file(path);
 
   return diskpath.with({ scheme: 'vscode-resource' });
 }
 
-function getLoadingContent(config: any) {
+function getLoadingContent(config: HtmlConfig): string {
   return `<!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>每日番剧</title>
+      <title>${config.isChinese ? '每日番剧' : 'Daily Anime'}</title>
       <link rel="stylesheet" href="${config.cssPath}">
   </head>
   <body>
   <div class="loading-container">
     <div class="loading">
         <img src="${config.imgPath}" alt="loading">
-        <h1>正在加载中...</h1>
+        <h1>${config.isChinese ? '正在加载中...' : 'Loading...'}</h1>
     </div>
   </div>
     <script>
@@ -27,19 +42,19 @@ function getLoadingContent(config: any) {
   </html>`;
 }
 
-function getWebviewContent(config: any) {
+function getWebviewContent(config: HtmlConfig): string {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>每日番剧</title>
+		<title>${config.isChinese ? '每日番剧' : 'Daily Anime'}</title>
 		<link rel="stylesheet" href="${config.cssPath}">
 </head>
 <body>
 <div class="bangumi-containr">
     <header class="bangumi-header" id="bangumi-header">
-      <h1>每日放送</h1>
+      <h1>${config.isChinese ? '每日放送' : 'Daily Anime'}</h1>
       <span class="date" id="date"></span>
       <p class="hitokoto" id="hitokoto"></p>
     </header>
@@ -56,5 +71,11 @@ function getWebviewContent(config: any) {
 </html>`;
 }
 
+function isChineseLanguage(): boolean {
+  let language = (vscode.env.language || '').toLowerCase();
 
-export { getSourchPath, getWebviewContent, getLoadingContent };
+  return language === 'zh-cn' || language === 'zh-tw';
+}
+
+
+export { getSourchPath, getWebviewContent, getLoadingContent, isChineseLanguage };

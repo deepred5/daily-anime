@@ -1,40 +1,14 @@
 import * as vscode from 'vscode';
-import * as path from 'path';
-import { getSourchPath, getWebviewContent, getLoadingContent } from './util';
-import { getCalendar, getHitokoto } from './api';
+import hitokoto from './command/hitokoto';
+import anime from './command/anime';
 
 export function activate(context: vscode.ExtensionContext) {
 
 	let dailyAnimeCommand = vscode.commands.registerCommand('extension.dailyAnime', () => {
-
-		const panel = vscode.window.createWebviewPanel(
-			'dailyAnime',
-			'每日番剧',
-			vscode.ViewColumn.One,
-			{
-				enableScripts: true,
-				retainContextWhenHidden: true
-			}
-		);
-
-		const cssPath = getSourchPath(path.join(context.extensionPath, 'template/css', 'anime.css'));
-		const jsPath = getSourchPath(path.join(context.extensionPath, 'template/js', 'anime.js'));
-		const imgPath = getSourchPath(path.join(context.extensionPath, 'template/assets', 'loading.png'));
-
-		panel.webview.html = getLoadingContent({ cssPath, imgPath });
-
-		Promise.all([getCalendar(), getHitokoto('a')]).then(([bangumi, hitokoto]) => {
-			panel.webview.html = getWebviewContent({ cssPath, jsPath, data: { bangumi, hitokoto } });
-		});
-
+		anime(context);
 	});
 
-	let hitokotoCommand = vscode.commands.registerCommand('extension.hitokoto', () => {
-		getHitokoto().then((res: any) => {
-			const { hitokoto = '都是时臣的错' } = res;
-			vscode.window.showInformationMessage(hitokoto);
-		});
-	});
+	let hitokotoCommand = vscode.commands.registerCommand('extension.hitokoto', hitokoto);
 
 	context.subscriptions.push(dailyAnimeCommand);
 	context.subscriptions.push(hitokotoCommand);
