@@ -3,7 +3,7 @@
 	"displayName": "daily anime",
 	"description": "A extension for daily anime",
 	"icon": "daily-anime-icon.jpg",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"engines": {
 		"vscode": "^1.31.0"
 	},
@@ -64,7 +64,8 @@
 		"postinstall": "node ./node_modules/vscode/bin/install",
 		"test": "npm run compile && node ./node_modules/vscode/bin/test",
 		"build:sass": "gulp",
-		"view": "http-server ./template/ -p 4444 -c-1"
+		"view": "http-server ./template/ -p 4444 -c-1",
+		"package": "vsce package"
 	},
 	"devDependencies": {
 		"@types/mocha": "^2.2.42",
