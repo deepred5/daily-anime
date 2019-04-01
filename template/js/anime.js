@@ -9,8 +9,12 @@ class Page {
       today = 7;
     };
 
+    let bangumi = props.bangumi || [];
+
+    bangumi.length && bangumi.unshift(bangumi.pop());
+
     this.state = {
-      bangumi: props.bangumi || [],
+      bangumi: bangumi,
       hitokoto: props.hitokoto || {},
       today,
       isChinese: props.isChinese
@@ -70,6 +74,11 @@ class Page {
   renderDayAnime(data) {
     const items = data.items || [];
     const itemsTemplate = items.map((item) => {
+      if (!item.images) {
+        item.images = {
+          medium: 'https://i.loli.net/2019/04/01/5ca2068a80f49.png'
+        }
+      }
       let animeName = item.name_cn || item.name;
       if (!this.state.isChinese) {
         animeName = item.name || item.name_cn
