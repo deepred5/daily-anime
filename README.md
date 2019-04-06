@@ -12,7 +12,7 @@
 
 ### 功能:
 * [X] anime: 从[bangumi](https://bgm.tv/)上获取番剧
-* [X] hitokoto: 随机从网络获取一条acgn句子
+* [X] hitokoto: 随机从[网络](https://hitokoto.cn/)获取一条acgn句子
 
 ![daily-anime](https://i.loli.net/2019/02/20/5c6cec88e2d41.png)
 
