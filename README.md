@@ -1,15 +1,15 @@
 # daily-anime 
 
-追番插件 (=・ω・=)
+<img src="https://github.com/deepred5/daily-anime/raw/master/daily-anime-icon.jpg" width="100">
 
-[插件地址](https://marketplace.visualstudio.com/items?itemName=deepred.daily-anime) [项目地址](https://github.com/deepred5/daily-anime)
+[插件地址](https://marketplace.visualstudio.com/items?itemName=deepred.daily-anime) [github地址](https://github.com/deepred5/daily-anime)
 
 
-安装: 搜索插件 `daily anime`
+安装: vscode扩展搜索插件 `daily anime`
 
 功能:
-* anime: 从[bangumi](https://bgm.tv/)上获取番剧
-* hitokoto: 随机从网络获取一条acgn句子
+* [X] anime: 从[bangumi](https://bgm.tv/)上获取番剧
+* [X] hitokoto: 随机从网络获取一条acgn句子
 
 ![daily-anime](https://i.loli.net/2019/02/20/5c6cec88e2d41.png)
 
